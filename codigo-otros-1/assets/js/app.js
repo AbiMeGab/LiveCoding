@@ -1,14 +1,12 @@
 const baseEndpoint = 'https://api.github.com';
 const usersEndpoint = `${baseEndpoint}/users`;
-const $n = document.getElementById('name');
-const $b = document.getElementById('blog');
-const $l = document.getElementById('location');
+const $n = document.querySelector('.name'); 
+const $b = document.querySelector('.blog');
+const $l = document.querySelector('.location');
 
 function displayUser() {
-  fetchAnswer();
-
-  function fetchAnswer (){
-     let info = fetch(baseEndpoint, {
+  fetchAnswer(){
+     let info = fetch(${usersEndpoint}/${username}, {
       method: "GET"
      })
  
@@ -18,9 +16,9 @@ function displayUser() {
     })
   })
  }
-  $n.textContent = 'cargando...';
+  $n.textContent = 'Cargando...';
   console.log(info);
-  $n.textContent = `${data.name} + usersEndpoint`;
+  $n.textContent = `${data.name} + ${usersEndpoint}`;
   $b.textContent = `${data.blog}`;
   $l.textContent = `${data.location}`;
 }
