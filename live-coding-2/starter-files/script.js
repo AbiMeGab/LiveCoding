@@ -3,10 +3,16 @@ const API_ENDPOINT = 'https://yesno.wtf/api';
 
 let btn = document.getElementById("button");
 let answer = document.getElementById("answer");
+let input = document.getElementById("input");
+
 
 btn.addEventListener("click", function(e){
     e.preventDefault
-    fetchAnswer();
+    if (input.value.length < 0) {
+        document.getElementById("input").disabled;
+    } else {
+        fetchAnswer();
+    }
 });
 
 function fetchAnswer (){
