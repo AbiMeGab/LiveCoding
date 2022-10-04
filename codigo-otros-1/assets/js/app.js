@@ -4,29 +4,30 @@ const $n = document.querySelector('.name');
 const $b = document.querySelector('.blog');
 const $l = document.querySelector('.location');
 
-function displayUser() {
-  fetchAnswer(){
-     let info = fetch(${usersEndpoint}/${username}, {
+function displayUser(username) {
+     let info = fetch(`${usersEndpoint}/${username}`, {
       method: "GET"
-     })
+     });
  
   info.then((response)=>{
     response.json().then((data)=>{
       console.log(data);
-    })
-  })
- }
-  $n.textContent = 'Cargando...';
-  console.log(info);
-  $n.textContent = `${data.name} + ${usersEndpoint}`;
+  $n.textContent = `${data.name}`;
   $b.textContent = `${data.blog}`;
   $l.textContent = `${data.location}`;
+    }).catch((error)=>{
+      handleError(error);
+    });
+  }).catch((error)=>{
+    handleError(error);
+  });
+  
 }
 
-function handleError(err) {
+function handleError(error) {
   console.log('OH NO!');
-  console.log(err);
-  n.textContent = `Algo salió mal: ${err}`
+  console.log(error);
+  n.textContent = `Algo salió mal: ${error}`
 }
 
-displayUser('stolinski').catch(handleError);
+displayUser('stolinski');

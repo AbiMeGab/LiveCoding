@@ -1,15 +1,15 @@
 // Tenemos un li de productos
 
 const productos = [
-  {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"},
+  {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"}, //añadí la imagen no estaba referenciada
   {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./taco-azul.jpg"},
   {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./bota-negra.jpg"},
   {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./bota-azul.jpg"},
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
-]
+];
 
-const li = document.getElementsByName("lista-de-productos")
-const $i = document.querySelector('.input');
+const li = document.getElementById("lista-de-productos");
+const $i = document.getElementById('input');
 
 for (let i = 0; i < productos.length; i++) {
   var d = document.createElement("div")
@@ -28,10 +28,11 @@ for (let i = 0; i < productos.length; i++) {
   li.appendChild(d)
 }
 
-displayProductos(productos)
-const botonDeFiltro = document.querySelector("button");
+const btn = document.getElementById("btnFiltro"); //Primero que nada se añade el botón con getElementById.
 
-botonDeFiltro.onclick = function() {
+//displayProductos(productos) <No sé para qué es.
+
+btn.onclick = function() {
   while (li.firstChild) {
     li.removeChild(li.firstChild);
   }
